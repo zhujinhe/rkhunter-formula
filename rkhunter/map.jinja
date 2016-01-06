@@ -1,0 +1,9 @@
+{% set rkhunter = salt['grains.filter_by']({
+  'RedHat':{
+    'pkg_name': 'rkhunter',
+    'conf': '/etc/rkhunter.conf',
+    'cron_conf': '/etc/cron.daily/rkhunter',
+    'logrotate_conf': '/etc/logrotate.d/rkhunter',
+    'sysconfig_conf': '/etc/sysconfig/rkhunter',
+  }
+}, merge=salt['pillar.get']('rkhunter:lookup')) %}
